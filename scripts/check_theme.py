@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "kkeut_seo_site"
 BASE = ROOT / "data" / "theme-baseline.json"
 OLD_COLORS = ["brandorange", "cardred", "cardblue", "cardteal", "cardnavy", "cardmagenta", "cardgreen", "kpink", "kpinksoft", "khot", "kyellow"]
+VERIFY_FILE = re.compile(r"^(google|naver)[0-9a-f]+\.html$")  # 검색엔진 소유확인 파일은 페이지가 아님
 HEAD_START = '<script src="https://cdn.tailwindcss.com">'
 
 
@@ -70,7 +71,7 @@ def page_info(p: Path) -> dict:
 
 
 def collect() -> dict:
-    pages = {p.name: page_info(p) for p in sorted(SITE.glob("*.html"))}
+    pages = {p.name: page_info(p) for p in sorted(SITE.glob("*.html")) if not VERIFY_FILE.match(p.name)}
     return {
         "pages": pages,
         "sitemap_md5": md5(read(SITE / "sitemap.xml")),

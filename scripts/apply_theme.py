@@ -109,7 +109,7 @@ def main(argv: list[str]) -> int:
     rc = 0
     changed = 0
     for p in sorted(SITE.glob("*.html")):
-        if p.name in SKIP or p.name.startswith("magazine-"):
+        if p.name in SKIP or p.name.startswith("magazine-") or re.match(r"^(google|naver)[0-9a-f]+\.html$", p.name):
             continue
         raw = p.read_bytes()
         crlf = b"\r\n" in raw

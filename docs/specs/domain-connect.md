@@ -1,6 +1,6 @@
 # 도메인 연결 — hongdaekkeutclinic.com
 
-작성일: 2026-11-05 · 상태: 진행 중 · 관련: `docs/specs/github-repo.md`(저장소 완료)
+작성일: 2026-11-05 · 상태: 연결 완료(2026-11-05 17:36 KST, apex HTTPS 200 · www 는 Vercel 에 미추가) · 관련: `docs/specs/github-repo.md`(저장소 완료)
 
 ## 문제 / 목적
 사용자가 `hongdaekkeutclinic.com` 을 샀다. 깃허브 저장소의 `kkeut_seo_site/` 를 이 도메인으로 서비스한다. 지금까지 코드에 박혀 있던 `blog.kkeutclinic-hongdae.co.kr` 은 DNS 에 응답이 없어(2026-11-05 확인) 실제로 떠 있는 사이트가 아니므로, 새 도메인을 **유일한 기준 주소**로 삼는다.
@@ -24,12 +24,16 @@
 - 어드민(kkeut_admin.html)을 웹에 올리는 것(로컬 파일로만 쓴다).
 
 ## 완료 기준
-- [ ] `set_domain.py --show` 가 새 도메인 한 종류만 보고한다. check_theme 통과·기준선 재저장.
-- [ ] Vercel 배포 URL 에서 index·columns·jemo 가 뜬다.
-- [ ] `https://hongdaekkeutclinic.com/` 과 `/sitemap.xml` 이 200 이고 canonical 이 새 도메인이다. www 는 apex 로 간다.
-- [ ] 푸시 뒤 Vercel 이 자동 재배포한다(커밋 → 1~2분 뒤 반영).
+- [x] `set_domain.py --show` 가 새 도메인 한 종류만 보고한다. check_theme 통과·기준선 재저장.
+- [x] Vercel 배포 URL 에서 index·columns·jemo 가 뜬다. (프로젝트 이름은 `kkeut-hongdae-blog-kkeut_seo_site`, 배포 주소 kkeut-hongdae-blog-kkeutseosite.vercel.app)
+- [x] `https://hongdaekkeutclinic.com/` 과 `/sitemap.xml` 이 200 이고 canonical 이 새 도메인이다. http→https 308. **www 는 아직 Vercel 프로젝트에 추가되지 않아 응답 없음** → Add Existing 으로 `www.hongdaekkeutclinic.com` 추가 + 리디렉트 설정 필요(가비아 CNAME 은 이미 있음).
+- [x] 푸시 뒤 Vercel 이 자동 재배포한다(077a4a3 푸시 → 약 1분 뒤 canonical 반영 확인).
 
 ## 제약 / 가정
 - 호스팅 UI 조작·DNS 입력은 사용자가 한다(브라우저 도구 없음). 나는 코드·검증·명령을 맡는다.
 - 기준 주소는 `https://hongdaekkeutclinic.com`(www 없는 apex). www 는 리디렉트.
 - 도메인 등록 업체는 미확인 → DNS 입력 화면이 다르므로 알려 주면 그 업체 기준으로 안내.
+
+## 진행 기록
+- 2026-11-05 가비아 DNS 관리툴에 A @ 76.76.21.21, CNAME www cname.vercel-dns.com. 입력(17:33) → 구글 DNS 전파 1분 내 → Vercel Refresh 뒤 SSL 발급, 17:36 apex 200. 가비아의 "DNS 호스트" 메뉴는 네임서버용이라 쓰지 않는다(DNS 관리툴 dns.gabia.com 이 맞는 곳).
+- 2026-11-05 **네이버 서치어드바이저 등록 완료**: 사이트 https://hongdaekkeutclinic.com 소유확인(HTML 태그 `naver-site-verification`, index.html head, 커밋 6599981), 사이트맵 `sitemap.xml` 제출(17:47), 웹 페이지 수집 요청 7건(/, columns, jemo, toning, lifting, acne, diet). 구글 서치콘솔은 미등록.
