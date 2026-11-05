@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>끗 한의원 블로그 어드민</title>
+<meta name="robots" content="noindex">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+<script src="https://uicdn.toast.com/editor/latest/i18n/ko-kr.min.js"></script>
+<style>
+  html, body { height: 100%; }
+  body { font-family:'Pretendard',system-ui,sans-serif; }
+  .kr { word-break: keep-all; }
+  input, textarea, select { outline: none; }
+  input:focus, textarea:focus, select:focus { border-color: #F97B1E; }
+  .toastui-editor-defaultUI { border-radius: 12px; border-color: rgba(0,0,0,.12) !important; font-family:'Pretendard',sans-serif; }
+  .screen { display: none; }
+  .screen.on { display: block; }
+  .tab { display: none; }
+  .tab.on { display: block; }
+</style>
+</head>
+<body class="bg-[#F3F3F0] text-[#111] antialiased">
+
+<!-- ================================================= -->
+<!-- 로그인 화면 -->
+<!-- ================================================= -->
+<div id="screen-login" class="screen on">
+  <div class="min-h-[100dvh] flex items-center justify-center px-4">
+    <div class="w-full max-w-[400px] bg-white rounded-3xl border border-black/5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.15)] p-10 text-center">
+      <p class="text-[26px] font-extrabold tracking-tight">끗 한의원</p>
+      <p class="mt-1 text-[14px] font-semibold text-[#F97B1E]">블로그 어드민</p>
+      <div id="pw-set" class="hidden mt-8 text-left">
+        <p class="kr text-[13.5px] text-black/60 leading-relaxed">처음 사용이시네요. 이 컴퓨터에서 사용할 <b>어드민 비밀번호</b>를 설정해 주세요.</p>
+        <input id="pw-new" type="password" placeholder="새 비밀번호 (4자 이상)" class="mt-4 w-full border border-black/15 rounded-xl px-4 py-3.5 text-[15px]">
+        <input id="pw-new2" type="password" placeholder="비밀번호 확인" class="mt-2.5 w-full border border-black/15 rounded-xl px-4 py-3.5 text-[15px]">
+        <button onclick="setPw()" class="mt-4 w-full bg-[#1a1a1a] text-white font-bold rounded-xl py-4 hover:bg-[#F97B1E] transition">설정하고 시작하기</button>
+      </div>
+      <div id="pw-enter" class="hidden mt-8">
+        <input id="pw-input" type="password" placeholder="비밀번호" class="w-full border border-black/15 rounded-xl px-4 py-3.5 text-[15px] text-center" onkeydown="if(event.key==='Enter')login()">
+        <button onclick="login()" class="mt-3 w-full bg-[#F97B1E] text-white font-bold rounded-xl py-4 hover:brightness-110 transition">로그인</button>
+        <p id="pw-err" class="hidden mt-3 text-[13px] text-red-500 font-semibold">비밀번호가 맞지 않습니다.</p>
+      </div>
+      <p class="kr mt-7 text-[11.5px] text-black/35 leading-relaxed">이 잠금은 이 파일을 여는 사람을 위한 화면 잠금입니다.<br>파일 자체는 안전한 곳(내 PC)에 보관하세요.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- 어드민 본 화면 : 사이드바 + 콘텐츠 -->
+<!-- ================================================= -->
+<div id="screen-admin" class="screen">
+  <div class="min-h-[100dvh] flex">
+
+    <!-- 사이드바 -->
+    <aside class="w-[230px] shrink-0 bg-[#1a1a1a] text-white/80 flex flex-col">
+      <div class="px-6 py-7 border-b border-white/10">
+        <p class="font-extrabold text-[18px] text-white">끗 한의원</p>
+        <p class="text-[12px] text-[#F97B1E] font-semibold mt-0.5">블로그 어드민</p>
+      </div>
+      <nav class="flex-1 px-3 py-4 space-y-1 text-[14.5px]">
+        <button data-tab="write" onclick="showTab('write')" class="navbtn w-full text-left rounded-xl px-4 py-3 font-semibold bg-white/10 text-white">✏️&nbsp; 새 글 쓰기</button>
+        <button data-tab="list" onclick="showTab('list')" class="navbtn w-full text-left rounded-xl px-4 py-3 hover:bg-white/5 transition">📄&nbsp; 글 목록 <span id="cnt" class="text-[11px] text-white/40"></span></button>
+        <button data-tab="guide" onclick="showTab('guide')" class="navbtn w-full text-left rounded-xl px-4 py-3 hover:bg-white/5 transition">📌&nbsp; 업로드 안내</button>
+        <button data-tab="setting" onclick="showTab('setting')" class="navbtn w-full text-left rounded-xl px-4 py-3 hover:bg-white/5 transition">⚙️&nbsp; 설정</button>
+      </nav>
+      <div class="px-6 py-5 border-t border-white/10 text-[12px] text-white/40">
+        <button onclick="logout()" class="hover:text-white transition">로그아웃</button>
+      </div>
+    </aside>
+
+    <!-- 콘텐츠 -->
+    <main class="flex-1 min-w-0 overflow-y-auto">
+
+      <!-- ===== 탭: 새 글 쓰기 ===== -->
+      <section id="tab-write" class="tab on p-8 max-w-[1000px]">
+        <div class="flex items-center justify-between">
+          <h1 class="text-[24px] font-extrabold">새 글 쓰기</h1>
+          <div class="flex gap-2">
+            <button onclick="saveDraft()" class="border border-black/15 bg-white rounded-xl px-5 py-2.5 text-[14px] font-bold hover:border-black transition">임시저장</button>
+            <button onclick="generate()" class="bg-[#F97B1E] text-white rounded-xl px-6 py-2.5 text-[14px] font-bold hover:brightness-110 transition">발행 파일 만들기</button>
+          </div>
+        </div>
+
+        <div class="mt-6 bg-white rounded-2xl border border-black/5 p-6 space-y-4">
+          <input id="title" type="text" placeholder="글 제목을 입력하세요" class="w-full border-b-2 border-black/10 px-1 py-3 text-[22px] font-extrabold focus:border-[#F97B1E]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="text-[12.5px] font-semibold text-black/50">카테고리</label>
+              <select id="category" class="mt-1 w-full border border-black/15 rounded-lg px-3.5 py-2.5 text-[14px] bg-white">
+                <option value="concern">피부 고민</option>
+                <option value="guide">시술 가이드</option>
+                <option value="care">관리 &amp; 홈케어</option>
+                <option value="first-visit">처음 방문 가이드</option>
+                <option value="note">원장 노트</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-[12.5px] font-semibold text-black/50">파일 이름 (영문·하이픈)</label>
+              <div class="mt-1 flex items-center gap-1.5">
+                <span class="text-[12px] text-black/40">column-</span>
+                <input id="slug" type="text" placeholder="jemo-tips" class="flex-1 min-w-0 border border-black/15 rounded-lg px-3.5 py-2.5 text-[14px]">
+              </div>
+            </div>
+            <div>
+              <label class="text-[12.5px] font-semibold text-black/50">작성일</label>
+              <input id="date" type="text" class="mt-1 w-full border border-black/15 rounded-lg px-3.5 py-2.5 text-[14px]">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-[12.5px] font-semibold text-black/50">검색 설명 (SEO)</label>
+              <input id="seodesc" type="text" placeholder="검색 결과에 뜰 요약 (비워두면 자동)" class="mt-1 w-full border border-black/15 rounded-lg px-3.5 py-2.5 text-[14px]">
+            </div>
+            <div>
+              <label class="text-[12.5px] font-semibold text-black/50">관련 시술 버튼</label>
+              <select id="related" class="mt-1 w-full border border-black/15 rounded-lg px-3.5 py-2.5 text-[14px] bg-white">
+                <option value="jemo.html|레이저 제모 시술 보기">제모</option>
+                <option value="diet.html|다이어트 프로그램 보기">다이어트</option>
+                <option value="lifting.html|리프팅 시술 보기">리프팅</option>
+                <option value="toning.html|토닝·색소 시술 보기">미백/색소/토닝</option>
+                <option value="acne.html|여드름 시술 보기">여드름</option>
+                <option value="skinbooster.html|스킨부스터 보기">스킨부스터</option>
+                <option value="skincare.html|스킨케어 보기">스킨케어</option>
+                <option value="face-contour.html|윤곽·쁘띠 보기">윤곽/쁘띠</option>
+                <option value="antiaging.html|안티에이징 보기">안티에이징</option>
+                <option value="index.html#menu|시술메뉴 보기">시술메뉴 전체</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-[12.5px] font-semibold text-black/50">고민 태그 (1~2개)</label>
+              <div id="concerns" class="mt-1.5 flex flex-wrap gap-x-4 gap-y-2 text-[13.5px]">
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="acne">여드름·모공</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="pigment">기미·색소</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="elasticity">탄력·주름</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="scar">흉터</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="hair">제모</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="diet">다이어트</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="dry">건조·민감</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="contour">윤곽</label>
+              </div>
+            </div>
+            <div>
+              <label class="text-[12.5px] font-semibold text-black/50">시술 태그 (0~2개, 시술 페이지 "관련 칼럼"에 뜸)</label>
+              <div id="treatments" class="mt-1.5 flex flex-wrap gap-x-4 gap-y-2 text-[13.5px]">
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="jemo.html">제모</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="diet.html">다이어트</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="lifting.html">리프팅</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="toning.html">토닝·색소</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="acne.html">여드름</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="skinbooster.html">스킨부스터</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="skincare.html">스킨케어</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="face-contour.html">윤곽·쁘띠</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="antiaging.html">안티에이징</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="antiaging-center.html">안티에이징센터</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" value="scar-center.html">흉터재생센터</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 bg-white rounded-2xl border border-black/5 p-6">
+          <div id="editor"></div>
+          <div id="editor-fallback" class="hidden">
+            <p class="kr text-[13px] text-red-500 font-semibold mb-2">⚠ 에디터를 불러오지 못했습니다 (인터넷 연결 확인). 아래 기본 입력창을 사용하세요 — 빈 줄로 문단 구분, 줄 앞 "## "는 소제목.</p>
+            <textarea id="body-fallback" rows="16" class="w-full border border-black/15 rounded-lg px-4 py-3 text-[14.5px] leading-relaxed"></textarea>
+          </div>
+        </div>
+
+        <!-- 발행 결과 -->
+        <div id="outputs" class="hidden mt-6 space-y-5">
+          <div class="bg-white rounded-2xl border-2 border-[#F97B1E]/40 p-6">
+            <h2 class="font-extrabold text-[17px]">✅ 발행 파일이 준비됐어요</h2>
+            <div class="mt-3 flex flex-wrap items-center gap-3">
+              <button onclick="downloadHtml()" id="dlbtn" class="bg-[#1a1a1a] text-white font-bold rounded-xl px-6 py-3 hover:bg-[#F97B1E] transition">다운로드</button>
+              <span id="sizeinfo" class="text-[12.5px] text-black/45"></span>
+            </div>
+            <div class="mt-5">
+              <p class="text-[13px] font-bold">data/magazine/posts.json 의 "posts" 맨 위에 붙여넣을 항목 <button onclick="copyText('jsoncode', this)" class="ml-1 text-[11px] font-bold text-[#F97B1E]">복사</button></p>
+              <textarea id="jsoncode" rows="12" readonly class="mt-1.5 w-full border border-black/10 rounded-lg bg-black/[0.03] px-3 py-2.5 text-[11.5px] font-mono"></textarea>
+              <p class="kr mt-2 text-[12px] text-black/45">붙인 뒤 <code>python -X utf8 -I scripts/magazine/build.py</code> 를 실행하면 매거진 홈·허브·첫 화면·시술 페이지·sitemap 이 함께 갱신됩니다. 새 글 주소: <span id="finalurl" class="font-bold text-[#F97B1E]"></span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 탭: 글 목록 ===== -->
+      <section id="tab-list" class="tab p-8 max-w-[1000px]">
+        <h1 class="text-[24px] font-extrabold">글 목록</h1>
+        <p class="kr mt-1 text-[13.5px] text-black/50">이 컴퓨터에 저장된 글입니다. 클릭하면 불러와서 수정할 수 있어요.</p>
+        <ul id="postList" class="mt-6 space-y-3"></ul>
+        <p id="emptyMsg" class="kr mt-6 text-black/40 text-[14px]">저장된 글이 없습니다. '새 글 쓰기'에서 임시저장하면 여기에 쌓입니다.</p>
+      </section>
+
+      <!-- ===== 탭: 업로드 안내 ===== -->
+      <section id="tab-guide" class="tab p-8 max-w-[820px]">
+        <h1 class="text-[24px] font-extrabold">업로드 안내</h1>
+        <div class="mt-6 bg-white rounded-2xl border border-black/5 p-7">
+          <ol class="kr space-y-4 text-[15px] leading-relaxed list-decimal list-inside">
+            <li><b>발행 파일 만들기</b> → 칼럼 HTML 다운로드 → 저장소의 <b>kkeut_seo_site/</b> 폴더에 넣기</li>
+            <li><b>data/magazine/posts.json</b> 열기 → "posts" 맨 위에 위에서 복사한 항목 붙여넣기</li>
+            <li>터미널에서 <b>python -X utf8 -I scripts/magazine/build.py</b> 실행 → 매거진 홈·허브·첫 화면·시술 페이지·sitemap 이 함께 갱신</li>
+            <li><b>python -X utf8 -I scripts/check_theme.py check</b> 로 확인 → <b>baseline</b> 으로 기준선 재저장</li>
+            <li><b>python -X utf8 -I scripts/repo_check.py</b> 통과 확인 → <b>git add -A &amp;&amp; git commit</b> → <b>git push</b> (저장소: github.com/musicman0519-a11y/kkeut-hongdae-blog). 호스팅이 저장소에 연결되어 있으면 자동 배포됩니다.</li>
+          </ol>
+          <p class="kr mt-6 text-[13px] text-black/45 border-t border-black/10 pt-5">💡 사진은 에디터에 붙여넣으면 자동으로 가로 1200px로 축소돼 글 파일 안에 담깁니다. 별도 이미지 업로드가 필요 없어요. 한 글에 사진 5~8장 이내를 권장합니다.</p>
+        </div>
+      </section>
+
+      <!-- ===== 탭: 설정 ===== -->
+      <section id="tab-setting" class="tab p-8 max-w-[640px]">
+        <h1 class="text-[24px] font-extrabold">설정</h1>
+        <div class="mt-6 bg-white rounded-2xl border border-black/5 p-7 space-y-6">
+          <div>
+            <label class="text-[13px] font-semibold text-black/60">사이트 주소 (배포 도메인)</label>
+            <input id="site" type="text" class="mt-1.5 w-full border border-black/15 rounded-lg px-4 py-3 text-[14px]">
+            <p class="kr mt-1.5 text-[12px] text-black/40">배포 도메인이 바뀔 때 한 번만 변경하면 됩니다(기본 https://blog.kkeutclinic-hongdae.co.kr). 저장 즉시 반영돼요.</p>
+            <button onclick="saveSite()" class="mt-3 bg-[#1a1a1a] text-white font-bold rounded-xl px-5 py-2.5 text-[13.5px] hover:bg-[#F97B1E] transition">저장</button>
+          </div>
+          <div class="border-t border-black/10 pt-6">
+            <label class="text-[13px] font-semibold text-black/60">비밀번호 변경</label>
+            <input id="pw-change" type="password" placeholder="새 비밀번호" class="mt-1.5 w-full border border-black/15 rounded-lg px-4 py-3 text-[14px]">
+            <button onclick="changePw()" class="mt-3 border border-black/15 font-bold rounded-xl px-5 py-2.5 text-[13.5px] hover:border-black transition">변경</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+const NAVER = "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh";
+
+// ===== 저장소 (localStorage, 미지원 환경은 메모리로 대체) =====
+let mem = {};
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch(e) { return mem[k] ?? null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch(e) { mem[k] = v; } },
+  del(k) { try { localStorage.removeItem(k); } catch(e) { delete mem[k]; } },
+};
+
+// ===== 로그인 =====
+function initLogin() {
+  const saved = store.get('kkeut_admin_pw');
+  document.getElementById(saved ? 'pw-enter' : 'pw-set').classList.remove('hidden');
+}
+function setPw() {
+  const a = document.getElementById('pw-new').value, b = document.getElementById('pw-new2').value;
+  if (a.length < 4) { alert('4자 이상으로 설정해 주세요.'); return; }
+  if (a !== b) { alert('비밀번호 확인이 일치하지 않습니다.'); return; }
+  store.set('kkeut_admin_pw', a);
+  enterAdmin();
+}
+function login() {
+  const v = document.getElementById('pw-input').value;
+  if (v === store.get('kkeut_admin_pw')) enterAdmin();
+  else document.getElementById('pw-err').classList.remove('hidden');
+}
+function logout() { location.reload(); }
+function enterAdmin() {
+  document.getElementById('screen-login').classList.remove('on');
+  document.getElementById('screen-admin').classList.add('on');
+  initEditor();
+  renderList();
+  document.getElementById('site').value = store.get('kkeut_site') || 'https://blog.kkeutclinic-hongdae.co.kr';
+}
+
+// ===== 탭 =====
+function showTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  document.getElementById('tab-' + name).classList.add('on');
+  document.querySelectorAll('.navbtn').forEach(b => {
+    b.classList.toggle('bg-white/10', b.dataset.tab === name);
+    b.classList.toggle('text-white', b.dataset.tab === name);
+    b.classList.toggle('font-semibold', b.dataset.tab === name);
+  });
+  if (name === 'list') renderList();
+}
+
+// ===== 에디터 =====
+let editor = null;
+function initEditor() {
+  if (editor) return;
+  document.getElementById('date').value = new Date().getFullYear() + '. ' + String(new Date().getMonth()+1).padStart(2,'0') + '.';
+  try {
+    if (typeof toastui === 'undefined') throw new Error('cdn');
+    editor = new toastui.Editor({
+      el: document.querySelector('#editor'),
+      height: '520px',
+      initialEditType: 'wysiwyg',
+      language: 'ko-KR',
+      placeholder: '본문을 작성하세요. 사진은 붙여넣기(Ctrl+V)나 드래그로 넣을 수 있어요.',
+      toolbarItems: [
+        ['heading', 'bold', 'italic', 'strike'],
+        ['hr', 'quote'],
+        ['ul', 'ol'],
+        ['table', 'image', 'link'],
+      ],
+      hooks: {
+        addImageBlobHook: async (blob, cb) => { cb(await resizeImage(blob, 1200), '이미지'); },
+      },
+    });
+  } catch (e) {
+    document.getElementById('editor-fallback').classList.remove('hidden');
+  }
+}
+function resizeImage(blob, maxW) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, maxW / img.width);
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      resolve(c.toDataURL('image/jpeg', 0.85));
+    };
+    img.src = URL.createObjectURL(blob);
+  });
+}
+function getBodyHtml() {
+  if (editor) return editor.getHTML();
+  const raw = document.getElementById('body-fallback').value.trim();
+  return raw.split(/\n\s*\n/).map(b => {
+    b = b.trim();
+    if (b.startsWith('## ')) return '<h2>' + escT(b.slice(3)) + '</h2>';
+    return '<p>' + escT(b).replace(/\n/g, '<br>') + '</p>';
+  }).join('\n');
+}
+function setBodyHtml(html) {
+  if (editor) editor.setHTML(html);
+  else document.getElementById('body-fallback').value = html.replace(/<[^>]+>/g, '');
+}
+function escT(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ===== 글 저장(임시저장) / 목록 =====
+function getPosts() { try { return JSON.parse(store.get('kkeut_posts') || '[]'); } catch(e) { return []; } }
+function setPosts(p) { store.set('kkeut_posts', JSON.stringify(p)); }
+
+const CATS = { concern:['피부 고민','magazine-concern.html'], guide:['시술 가이드','magazine-guide.html'], care:['관리 & 홈케어','magazine-care.html'], 'first-visit':['처음 방문 가이드','magazine-first-visit.html'], note:['원장 노트','magazine-note.html'] };
+const CONCERNS = { acne:'여드름·모공', pigment:'기미·색소', elasticity:'탄력·주름', scar:'흉터', hair:'제모', diet:'다이어트', dry:'건조·민감', contour:'윤곽' };
+const AUTHOR = '홍대 끗 한의원 원장 강민구';
+function checked(id) { return Array.from(document.querySelectorAll('#' + id + ' input:checked')).map(i => i.value); }
+function setChecked(id, vals) { document.querySelectorAll('#' + id + ' input').forEach(i => { i.checked = (vals || []).includes(i.value); }); }
+function collect() {
+  return {
+    title: document.getElementById('title').value.trim(),
+    slug: document.getElementById('slug').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, ''),
+    category: document.getElementById('category').value,
+    concerns: checked('concerns'),
+    treatments: checked('treatments'),
+    date: document.getElementById('date').value.trim(),
+    seodesc: document.getElementById('seodesc').value.trim(),
+    related: document.getElementById('related').value,
+    body: getBodyHtml(),
+    saved: new Date().toLocaleString('ko-KR'),
+  };
+}
+function saveDraft() {
+  const d = collect();
+  if (!d.title) { alert('제목을 입력해 주세요.'); return; }
+  const posts = getPosts();
+  const i = posts.findIndex(p => p.slug && d.slug && p.slug === d.slug);
+  if (i >= 0) posts[i] = d; else posts.unshift(d);
+  setPosts(posts);
+  renderList();
+  alert('임시저장 완료! (글 목록에서 다시 불러올 수 있어요)');
+}
+function renderList() {
+  const posts = getPosts();
+  document.getElementById('cnt').textContent = posts.length ? '(' + posts.length + ')' : '';
+  const ul = document.getElementById('postList');
+  document.getElementById('emptyMsg').style.display = posts.length ? 'none' : 'block';
+  ul.innerHTML = posts.map((p, i) => `
+    <li class="bg-white rounded-2xl border border-black/5 p-5 flex items-center gap-4">
+      <div class="min-w-0 flex-1 cursor-pointer" onclick="loadPost(${i})">
+        <p class="text-[12px] text-[#F97B1E] font-semibold">${esc((CATS[p.category] || ['원장 칼럼'])[0])}</p>
+        <p class="kr font-bold text-[16px] truncate">${esc(p.title)}</p>
+        <p class="text-[12px] text-black/40 mt-0.5">${esc(p.date || '')} · 저장 ${esc(p.saved || '')} ${p.slug ? '· column-' + esc(p.slug) + '.html' : ''}</p>
+      </div>
+      <button onclick="loadPost(${i})" class="shrink-0 border border-black/15 rounded-lg px-4 py-2 text-[13px] font-bold hover:border-black transition">수정</button>
+      <button onclick="delPost(${i})" class="shrink-0 border border-red-200 text-red-500 rounded-lg px-4 py-2 text-[13px] font-bold hover:bg-red-50 transition">삭제</button>
+    </li>`).join('');
+}
+function loadPost(i) {
+  const p = getPosts()[i];
+  if (!p) return;
+  document.getElementById('title').value = p.title || '';
+  document.getElementById('slug').value = p.slug || '';
+  document.getElementById('category').value = p.category || 'guide';
+  setChecked('concerns', p.concerns);
+  setChecked('treatments', p.treatments);
+  document.getElementById('date').value = p.date || '';
+  document.getElementById('seodesc').value = p.seodesc || '';
+  document.getElementById('related').value = p.related || document.getElementById('related').value;
+  setBodyHtml(p.body || '');
+  showTab('write');
+}
+function delPost(i) {
+  if (!confirm('이 글을 목록에서 삭제할까요? (이미 발행한 사이트의 글은 지워지지 않습니다)')) return;
+  const posts = getPosts(); posts.splice(i, 1); setPosts(posts); renderList();
+}
+
+// ===== 설정 =====
+function saveSite() { store.set('kkeut_site', document.getElementById('site').value.trim().replace(/\/+$/, '')); alert('저장됐습니다.'); }
+function changePw() {
+  const v = document.getElementById('pw-change').value;
+  if (v.length < 4) { alert('4자 이상으로 설정해 주세요.'); return; }
+  store.set('kkeut_admin_pw', v); alert('비밀번호가 변경됐습니다.');
+}
+
+// ===== 발행 파일 생성 =====
+let genFile = null, genName = '';
+function buildPage(d) {
+  return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(d.seotitle)}</title>
+<meta name="description" content="${esc(d.seodesc)}">
+<link rel="canonical" href="${d.site}/${d.file}">
+<meta property="og:title" content="${esc(d.seotitle)}">
+<meta property="og:description" content="${esc(d.seodesc)}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="${d.site}/${d.file}">
+<script src="https://cdn.tailwindcss.com"><\/script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Marcellus&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"><\/script>
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { sans: ['Pretendard','system-ui','sans-serif'], 'serif-kr': ['Gowun Batang','serif'], display: ['Marcellus','serif'] },
+  colors: { rose:'#E0507A', pink:'#FFC0CB', blush:'#F1A1AF', pinksoft:'#FDEEF3', ink:'#181818', kakao:'#FEE500', naver:'#03C75A' }
+} } }
+<\/script>
+</head>
+<body class="antialiased">
+<header class="sticky top-0 z-40 bg-white border-b border-black/10">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+    <div class="flex items-center justify-between gap-4 h-[60px] md:h-[76px]">
+      <a href="index.html" class="shrink-0 flex items-center gap-2.5 md:gap-3" aria-label="끗 한의원 홈">
+        <img src="assets/logo-mark.svg" alt="" width="365" height="365" class="h-9 md:h-11 w-auto">
+        <span class="flex flex-col items-start leading-none">
+          <span class="font-display text-[17px] md:text-[21px] tracking-[0.16em] text-blush">KKEUT CLINIC</span>
+          <img src="assets/logo-kr.svg" alt="끗 한의원" width="310" height="68" class="mt-1 h-[9px] md:h-[11px] w-auto self-end mr-0.5">
+        </span>
+      </a>
+      <nav aria-label="주 메뉴" class="hidden md:flex items-center gap-9 text-[15.5px] font-semibold whitespace-nowrap">
+        <div class="relative group">
+          <a href="columns.html" class="hover:text-rose ease-rt">매거진</a>
+          <div class="absolute left-0 top-full pt-3 hidden group-hover:block group-focus-within:block">
+            <div class="bg-white border border-black/10 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.25)] min-w-[200px] py-2 text-[14px] font-medium">
+<!-- mg:nav -->
+            <a href="columns.html" class="block px-4 py-2 hover:bg-black/5">전체 글</a>
+            <a href="magazine-guide.html" class="block px-4 py-2 hover:bg-black/5">시술 가이드</a>
+            <a href="magazine-care.html" class="block px-4 py-2 hover:bg-black/5">관리 &amp; 홈케어</a>
+<!-- /mg:nav -->
+            </div>
+          </div>
+        </div>
+        <a href="index.html#menu" class="hover:text-rose ease-rt">시술 안내</a>
+        <a href="index.html#event" class="hover:text-rose ease-rt">이벤트</a>
+        <a href="about.html" class="hover:text-rose ease-rt">끗 한의원</a>
+        <a href="index.html#booking" class="bg-rose text-white text-[14px] px-4 py-2 hover:brightness-110 ease-rt">예약</a>
+      </nav>
+      <div class="hidden lg:flex items-center gap-4 text-[13px] text-black/60 shrink-0">
+        <a href="tel:023248880" class="hover:text-black ease-rt">02-324-8880</a>
+        <span class="text-black/20">|</span>
+        <a href="https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="hover:text-black ease-rt">네이버 예약</a>
+      </div>
+      <a href="index.html#booking" class="md:hidden shrink-0 bg-rose text-white text-[13.5px] font-semibold px-3.5 py-2 ease-rt">예약</a>
+    </div>
+    <div class="md:hidden flex items-center gap-5 pb-3 text-[14px] font-semibold whitespace-nowrap overflow-x-auto">
+      <a href="columns.html" class="hover:text-rose ease-rt">매거진</a>
+      <a href="index.html#menu" class="hover:text-rose ease-rt">시술 안내</a>
+      <a href="index.html#event" class="hover:text-rose ease-rt">이벤트</a>
+      <a href="about.html" class="hover:text-rose ease-rt">끗 한의원</a>
+    </div>
+  </div>
+</header>
+<div class="max-w-[760px] mx-auto px-4 py-14 pb-28">
+<!-- mg:cat -->
+  <p class="text-[13px] font-semibold text-black/55"><a href="columns.html" class="hover:underline">끗 매거진</a> · <a href="${d.catFile}" class="hover:underline">${esc(d.catName)}</a></p>
+<!-- /mg:cat -->
+  <h1 class="kr mt-2 text-[28px] md:text-[32px] font-extrabold leading-snug">${esc(d.title)}</h1>
+<!-- mg:byline -->
+  <p class="mt-3 text-[13px] text-black/40">${esc(d.date)} · ${esc(AUTHOR)} · 의료인 작성</p>${d.chips}
+<!-- /mg:byline -->
+  <div class="w-12 h-[3px] bg-rose mt-5"></div>
+  <article class="post-body mt-9">
+${d.bodyHtml}
+  </article>
+  <div class="mt-12 flex flex-wrap gap-3">
+    <a href="${NAVER}" target="_blank" rel="noopener" class="rounded-xl bg-naver text-white font-semibold text-[14px] px-6 py-3 hover:brightness-110 ease-rt">네이버 예약</a>
+    <a href="${d.relHref}" class="rounded-xl bg-ink text-white font-semibold text-[14px] px-6 py-3 hover:bg-rose ease-rt">${esc(d.relName)}</a>
+    <a href="columns.html" class="rounded-xl border border-black/15 font-semibold text-[14px] px-6 py-3 hover:border-black ease-rt">매거진 목록</a>
+  </div>
+<!-- mg:next -->
+<!-- /mg:next -->
+</div>
+<footer class="mt-24 bg-ink text-white/70">
+  <div class="max-w-[1400px] mx-auto px-4 py-14 text-center">
+    <a href="index.html" class="inline-flex flex-col items-center gap-3" aria-label="끗 한의원 홈">
+      <img src="assets/logo-mark.svg" alt="" width="365" height="365" class="h-14 w-auto">
+      <img src="assets/logo-kr.svg" alt="끗 한의원" width="310" height="68" class="h-[13px] w-auto">
+    </a>
+    <nav aria-label="푸터 메뉴" class="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[14px] font-semibold text-white/85">
+      <a href="columns.html" class="hover:text-blush ease-rt">매거진</a>
+      <a href="index.html#menu" class="hover:text-blush ease-rt">시술 안내</a>
+      <a href="index.html#event" class="hover:text-blush ease-rt">이벤트</a>
+      <a href="about.html" class="hover:text-blush ease-rt">끗 한의원</a>
+      <a href="index.html#booking" class="hover:text-blush ease-rt">온라인예약</a>
+    </nav>
+    <div class="mt-5 flex justify-center gap-5 text-[13px]">
+      <a href="https://www.kkeutclinic-hongdae.co.kr" target="_blank" rel="noopener" class="hover:text-white ease-rt">개인정보처리방침</a><span class="text-white/20">|</span>
+      <a href="https://www.kkeutclinic-hongdae.co.kr" target="_blank" rel="noopener" class="hover:text-white ease-rt">이용약관</a><span class="text-white/20">|</span>
+      <a href="https://www.kkeutclinic-hongdae.co.kr" target="_blank" rel="noopener" class="hover:text-white ease-rt">시술 후 주의사항</a>
+    </div>
+    <p class="kr mt-6 text-[13px] text-white/50 leading-relaxed">
+      상호 : 홍대 끗 한의원 | 대표 : 강민구 | 사업자등록번호 : 510-16-97584<br>
+      주소 : 서울특별시 마포구 양화로 162, 4층 401호(동교동, 좋은사람들빌딩) | 전화 : 02-324-8880<br>진료권역 : 홍대 · 합정 · 신촌 · 연남 · 망원 — 홍대입구역 도보 3분, 합정역 도보권, 신촌 지하철 한 정거장
+    </p>
+    <div class="mt-5 flex justify-center gap-4 text-[13px]">
+      <a href="https://www.youtube.com/@kkeutclinic-hongdae" target="_blank" rel="noopener" class="hover:text-blush ease-rt">YOUTUBE</a>
+      <span class="text-white/20">|</span>
+      <a href="https://www.instagram.com/kkeut_clinic_hongdae" target="_blank" rel="noopener" class="hover:text-blush ease-rt">INSTAGRAM</a>
+    </div>
+    <p class="font-display mt-6 text-[12px] tracking-wide text-white/30">© 2026 KKEUT Korean Medicine Clinic, Hongdae.</p>
+  </div>
+</footer>
+<div id="floating" class="fixed right-4 bottom-24 md:bottom-8 z-40 flex flex-col gap-2">
+  <a href="https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh" target="_blank" rel="noopener" aria-label="네이버 예약" title="네이버 예약" class="hidden md:flex w-11 h-11 rounded-full bg-white border border-black/10 text-ink items-center justify-center shadow-[0_6px_20px_-8px_rgba(0,0,0,0.3)] hover:border-rose hover:text-rose ease-rt"><iconify-icon icon="solar:calendar-add-linear" width="20"></iconify-icon></a>
+  <a href="https://pf.kakao.com/_xgTJnX/chat" target="_blank" rel="noopener" aria-label="카카오톡 상담" title="카카오톡 상담" class="flex w-11 h-11 rounded-full bg-white border border-black/10 text-ink items-center justify-center shadow-[0_6px_20px_-8px_rgba(0,0,0,0.3)] hover:border-rose hover:text-rose ease-rt"><iconify-icon icon="solar:chat-round-linear" width="20"></iconify-icon></a>
+  <a href="https://www.instagram.com/kkeut_clinic_hongdae" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램" class="hidden md:flex w-11 h-11 rounded-full bg-white border border-black/10 text-ink items-center justify-center shadow-[0_6px_20px_-8px_rgba(0,0,0,0.3)] hover:border-rose hover:text-rose ease-rt"><iconify-icon icon="solar:camera-minimalistic-linear" width="20"></iconify-icon></a>
+  <a href="tel:023248880" aria-label="전화 02-324-8880" title="전화" class="flex w-11 h-11 rounded-full bg-rose text-white items-center justify-center shadow-[0_6px_20px_-8px_rgba(0,0,0,0.3)] hover:brightness-110 ease-rt"><iconify-icon icon="solar:phone-linear" width="20"></iconify-icon></a>
+  <a href="#" aria-label="맨 위로" title="맨 위로" class="flex w-11 h-11 rounded-full bg-white border border-black/10 text-ink items-center justify-center shadow-[0_6px_20px_-8px_rgba(0,0,0,0.3)] hover:border-black ease-rt"><iconify-icon icon="solar:alt-arrow-up-linear" width="20"></iconify-icon></a>
+</div>
+<div id="quickbar" class="fixed bottom-0 inset-x-0 z-40 md:hidden bg-white border-t border-black/10 grid grid-cols-3 text-[13.5px] font-semibold">
+  <a href="tel:023248880" class="py-3.5 flex items-center justify-center gap-1.5"><iconify-icon icon="solar:phone-linear" width="17"></iconify-icon>전화</a>
+  <a href="https://pf.kakao.com/_xgTJnX/chat" target="_blank" rel="noopener" class="py-3.5 flex items-center justify-center gap-1.5 border-x border-black/10"><iconify-icon icon="solar:chat-round-linear" width="17"></iconify-icon>카카오 상담</a>
+  <a href="index.html#booking" class="py-3.5 flex items-center justify-center gap-1.5 bg-rose text-white"><iconify-icon icon="solar:calendar-add-linear" width="17"></iconify-icon>온라인 예약</a>
+</div>
+</body>
+</html>
+`;
+}
+
+function generate() {
+  const d0 = collect();
+  const plain = d0.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!d0.title || !d0.slug || plain.length < 10) { alert('제목, 파일 이름(영문), 본문은 필수입니다.'); return; }
+  saveDraft2(d0);
+
+  const site = store.get('kkeut_site') || 'https://blog.kkeutclinic-hongdae.co.kr';
+  const file = 'column-' + d0.slug + '.html';
+  const seotitle = d0.title + ' | 홍대 끗 한의원 원장 칼럼';
+  const summary = plain.slice(0, 90);
+  const seodesc = d0.seodesc || (summary + ' 홍대 끗 한의원 원장 칼럼.');
+  const [relHref, relName] = d0.related.split('|');
+
+  const [catName, catFile] = CATS[d0.category] || CATS.guide;
+  const chips = d0.concerns.length
+    ? '\n  <p class="mt-3 flex flex-wrap gap-1.5">' + d0.concerns.map(c => `<a href="columns.html#tag=${c}" class="inline-block rounded-full border border-black/15 px-2.5 py-0.5 text-[11.5px] text-black/60">${esc(CONCERNS[c] || c)}</a>`).join('') + '</p>'
+    : '';
+  genFile = buildPage({ title: d0.title, seotitle, seodesc, catName, catFile, chips, date: d0.date, site, file, relHref, relName, bodyHtml: d0.body });
+  genName = file;
+  document.getElementById('jsoncode').value = JSON.stringify({
+    slug: d0.slug, title: d0.title, category: d0.category, concerns: d0.concerns, treatments: d0.treatments,
+    date: d0.date, summary: summary
+  }, null, 2) + ',';
+  document.getElementById('dlbtn').textContent = file + ' 다운로드';
+  const kb = Math.round(genFile.length / 1024);
+  document.getElementById('sizeinfo').textContent = '파일 크기 약 ' + (kb > 1024 ? (kb/1024).toFixed(1) + 'MB' : kb + 'KB') + (kb > 4000 ? ' — 사진이 많아요. 장수를 줄이면 로딩이 빨라집니다.' : '');
+  document.getElementById('finalurl').textContent = site + '/' + file;
+  document.getElementById('outputs').classList.remove('hidden');
+  document.getElementById('outputs').scrollIntoView({ behavior: 'smooth' });
+}
+function saveDraft2(d) {
+  const posts = getPosts();
+  const i = posts.findIndex(p => p.slug === d.slug);
+  if (i >= 0) posts[i] = d; else posts.unshift(d);
+  setPosts(posts);
+}
+function downloadHtml() {
+  if (!genFile) return;
+  const blob = new Blob([genFile], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = genName;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function copyText(id, btn) {
+  const el = document.getElementById(id);
+  el.select();
+  navigator.clipboard.writeText(el.value).then(() => {
+    btn.textContent = '복사됨!'; setTimeout(() => btn.textContent = '복사', 1500);
+  });
+}
+
+initLogin();
+</script>
+</body>
+</html>

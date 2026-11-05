@@ -1,0 +1,149 @@
+{
+  "categories": [
+    {
+      "slug": "concern",
+      "name": "피부 고민",
+      "en": "SKIN CONCERNS",
+      "file": "magazine-concern.html",
+      "desc": "모공·여드름, 기미·색소, 탄력, 흉터, 제모, 체형까지 피부 고민에서 출발하는 글"
+    },
+    {
+      "slug": "guide",
+      "name": "시술 가이드",
+      "en": "TREATMENT GUIDE",
+      "file": "magazine-guide.html",
+      "desc": "시술 원리, 통증·회복 기간·횟수·주기, 시술 조합을 원장이 설명하는 글"
+    },
+    {
+      "slug": "care",
+      "name": "관리 & 홈케어",
+      "en": "AFTERCARE",
+      "file": "magazine-care.html",
+      "desc": "시술 전 준비, 시술 후 관리, 계절별·생활습관 피부 관리법"
+    },
+    {
+      "slug": "first-visit",
+      "name": "처음 방문 가이드",
+      "en": "FIRST VISIT",
+      "file": "magazine-first-visit.html",
+      "desc": "상담 흐름, 비용 구조, 자주 묻는 질문, 준비물, 일요일 진료 안내"
+    },
+    {
+      "slug": "note",
+      "name": "원장 노트",
+      "en": "DOCTOR'S NOTE",
+      "file": "magazine-note.html",
+      "desc": "한방 관점의 피부 이야기, 진료 철학, 끗 한의원 소식"
+    }
+  ],
+  "concerns": [
+    {
+      "slug": "acne",
+      "name": "여드름·모공"
+    },
+    {
+      "slug": "pigment",
+      "name": "기미·색소"
+    },
+    {
+      "slug": "elasticity",
+      "name": "탄력·주름"
+    },
+    {
+      "slug": "scar",
+      "name": "흉터"
+    },
+    {
+      "slug": "hair",
+      "name": "제모"
+    },
+    {
+      "slug": "diet",
+      "name": "다이어트"
+    },
+    {
+      "slug": "dry",
+      "name": "건조·민감"
+    },
+    {
+      "slug": "contour",
+      "name": "윤곽"
+    }
+  ],
+  "treatments": [
+    {
+      "file": "jemo.html",
+      "name": "레이저 제모"
+    },
+    {
+      "file": "diet.html",
+      "name": "다이어트"
+    },
+    {
+      "file": "lifting.html",
+      "name": "리프팅"
+    },
+    {
+      "file": "toning.html",
+      "name": "토닝·색소"
+    },
+    {
+      "file": "acne.html",
+      "name": "여드름"
+    },
+    {
+      "file": "skinbooster.html",
+      "name": "스킨부스터"
+    },
+    {
+      "file": "skincare.html",
+      "name": "스킨케어"
+    },
+    {
+      "file": "face-contour.html",
+      "name": "윤곽·쁘띠"
+    },
+    {
+      "file": "antiaging.html",
+      "name": "안티에이징"
+    },
+    {
+      "file": "antiaging-center.html",
+      "name": "안티에이징센터"
+    },
+    {
+      "file": "scar-center.html",
+      "name": "흉터재생센터"
+    }
+  ],
+  "author": "홍대 끗 한의원 원장 강민구",
+  "posts": [
+    {
+      "slug": "jemo-shaving",
+      "title": "제모 전 면도, 왜 꼭 해야 할까?",
+      "category": "guide",
+      "concerns": [
+        "hair"
+      ],
+      "treatments": [
+        "jemo.html"
+      ],
+      "date": "2026. 07.",
+      "summary": "털의 길이가 짧을 때 시술이 더 효과적인 이유, 인그로운 헤어를 병원에서 정리해야 하는 이유, 시술 후 일주일의 관리법까지.",
+      "featured": 1
+    },
+    {
+      "slug": "summer-skin-care",
+      "title": "여름철 시술 후 피부 관리, 이것만 지키세요",
+      "category": "care",
+      "concerns": [
+        "pigment",
+        "dry"
+      ],
+      "treatments": [],
+      "date": "2026. 07.",
+      "summary": "자외선이 강한 계절의 시술 후 관리 원칙 — 차단, 보습, 그리고 일주일의 절제에 대하여.",
+      "featured": 2
+    }
+  ]
+}

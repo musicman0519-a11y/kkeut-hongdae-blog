@@ -1,0 +1,26 @@
+/* 끗 한의원 공통 스타일. 색·글꼴 토큰은 head 블록의 tailwind.config 에 있고, 여기에는 클래스로 쓸 수 없는 규칙만 둔다. */
+html { scroll-behavior: smooth; }
+body { font-family: 'Pretendard', system-ui, sans-serif; background: #fff; color: #181818; }
+h1, h2 { font-family: 'Gowun Batang', serif; letter-spacing: -0.01em; }
+.font-serif-kr { font-family: 'Gowun Batang', serif; }
+.font-display { font-family: 'Marcellus', serif; }
+.kr { word-break: keep-all; }
+.ease-rt { transition: all .4s cubic-bezier(0.16, 1, 0.3, 1); }
+/* 모바일 하단 고정 바(floating.html #quickbar) 높이만큼 본문 끝 여백 */
+@media (max-width: 767px) { body { padding-bottom: 52px; } }
+/* 어드민(kkeut_admin.html)이 발행하는 칼럼 본문 */
+.post-body { word-break: keep-all; font-size: 15.5px; line-height: 1.95; color: rgba(0,0,0,.8); }
+.post-body p { margin: 0 0 1.1em; }
+.post-body h1, .post-body h2 { font-size: 21px; font-weight: 700; margin: 2em 0 .6em; color: #181818; }
+.post-body h3 { font-size: 18px; font-weight: 700; margin: 1.6em 0 .5em; color: #181818; }
+.post-body img { max-width: 100%; border-radius: 10px; margin: 1.2em auto; display: block; }
+.post-body blockquote { border-left: 3px solid #E0507A; background: #FDEEF3; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 1.2em 0; }
+.post-body blockquote p { margin: 0; }
+.post-body hr { border: 0; border-top: 1px dashed rgba(0,0,0,.2); margin: 2em 0; }
+.post-body ul, .post-body ol { padding-left: 1.3em; margin: 0 0 1.1em; }
+.post-body li { margin: .3em 0; }
+.post-body table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: 14px; }
+.post-body th { background: #FDEEF3; font-weight: 700; }
+.post-body th, .post-body td { border: 1px solid rgba(0,0,0,.12); padding: 9px 12px; }
+.post-body a { color: #E0507A; text-decoration: underline; }
+.post-body strong { font-weight: 700; }

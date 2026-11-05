@@ -1,0 +1,41 @@
+# 허용 목록 방식: 루트의 모든 것을 막고 필요한 것만 연다.
+# 환자 정보(data/kkeut)·세무 매출·경쟁 의원 캡처(captures)·계약서·법령 PDF 는 어떤 경우에도 올리지 않는다.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/CLAUDE.md
+!/kkeut_admin.html
+!/kkeut_seo_site/
+!/scripts/
+!/docs/
+!/drafts/
+!/data/
+/data/*
+!/data/magazine/
+!/data/theme-baseline.json
+!/data/admon/
+/data/admon/*
+!/data/admon/clinics.csv
+!/data/admon/rules.csv
+!/data/admon/codes.csv
+
+# 어디에 있든 막는 것
+*.xlsx
+*.xls
+*.pdf
+*.zip
+*.gif
+*.mp4
+*.webm
+*.ai
+*.psd
+*.docx
+*.pptx
+*.log
+__pycache__/
+node_modules/
+settings.local.json
+.DS_Store
+Thumbs.db
+desktop.ini

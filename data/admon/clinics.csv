@@ -1,0 +1,38 @@
+병원명,법정동,도로명주소,홈페이지,전문의표기,이벤트URL,리뷰수,포함,사유,출처,기존10곳
+나인의원,서교동,마포구 양화로 165 3층,https://www.9skin2.co.kr/,피부과 전문의(마이닥터 표기)·9월 시트는 일반의,https://www.9skin2.co.kr/web/event,13(모두닥),Y,기존 10곳,9월 시트·사용자 제공 URL·모두닥,Y
+로바에의원,서교동,마포구 양화로 165 7층,https://lovaeclinic.com/,일반의(9월 시트),https://lovaeclinic.com/,-,Y,기존 10곳,9월 시트(lovaeclinic.co.kr→.com 리디렉트),Y
+밴스피부과의원,동교동,마포구 양화로 148 탑라인타워 6층,https://hongdae.vandsclinics.com/,피부과 전문의,https://hongdae.vandsclinics.com/web/event,"7,335(9월 시트)",Y,기존 10곳,9월 시트·닥터나우,Y
+블리비의원,서교동,마포구 양화로 161 케이스퀘어 4층,https://www.velyb.kr/,피부과 표기(체인),https://www.velyb.kr/community/community01.php?tb=event2,"6,510(9월 시트)",Y,기존 10곳,9월 시트,Y
+오블리주의원,서교동,마포구 양화로 165 상진빌딩 11층,https://ohvelyjoo.com/,가정의학과 1인(9월 시트),https://ohvelyjoo.com/,39(모두닥),Y,기존 10곳,9월 시트·사용자 제공 URL·모두닥,Y
+미소앤봄의원,서교동,마포구 양화로 162 카카오스토어 빌딩 7층,https://kr.nbomclinic.com/,피부과 표기,https://kr.nbomclinic.com/,"114(모두닥) · 9,256(9월 시트)",Y,기존 10곳,9월 시트·모두닥,Y
+톡스앤필의원,동교동,마포구 양화로 162 좋은사람들빌딩 11·12층,https://toxnfill50.com/,피부과 표기(전국 체인),https://toxnfill50.com/eventDetail.php?c=4741&i=34375,"1,709(9월 시트)",Y,기존 10곳,9월 시트,Y
+프로젝트유의원,동교동,마포구 양화로 162 6층,https://www.projectuclinic.com/,피부과 표기,https://www.projectuclinic.com/event/event-of-the-month/,"6,548(9월 시트)",Y,기존 10곳 · 자동 브라우저 차단(NinjaFirewall 403) → 2026-11-04 사용자 수동 캡처로 추출(팝업 3·이벤트 목록 일부),9월 시트·2026-11-02 접속 시험·사용자 캡처 2026-11-04,Y
+톤즈의원,서교동,마포구 양화로 140 6층,https://www.tonesclinic.com/hongdae,피부과 표기(체인),https://www.tonesclinic.com/hongdae,1.1만(9월 시트),N,기존 10곳 · 2026-11-02 캡처 시 홈페이지 410 '톤즈의원 홍대점 운영 종료 안내' → 폐업(운영 종료)으로 제외,9월 시트·웹 검색,Y
+셀린의원,동교동,마포구 양화로 162 15층,https://hongdae.cellinclinic.com/ko,피부과 표기(전국 체인),https://hongdae.cellinclinic.com/ko/events,-,Y,기존 10곳,9월 시트(cellinclinic4.com→hongdae.cellinclinic.com 리디렉트),Y
+홍대예쁨주의쁨의원,동교동,마포구 양화로 140 H-cube 4층(집계사이트: 양화로 144 3층),https://www.ppeum6.com/,표기 없음,https://event.ppeum.com/v1/event/reserve?branch=ppeum6&type=homepage,-,Y,신규 후보 · 체인(쁘띠 중심),닥터나우·굿닥·홈페이지,N
+홍대디온의원,동교동,마포구 양화로 156 LG팰리스빌딩 501호,https://theonclinic-hd.com/,가정의학과 전문의 1(닥터나우),https://theonclinic-hd.com/event/,-,Y,신규 후보,닥터나우·굿닥·홈페이지,N
+풀페이스의원,동교동,마포구 양화로 164 동덕타워 10층,https://fullface.co.kr/,표기 없음,https://fullface.co.kr/promotion/,19(모두닥),Y,신규 후보,닥터나우·모두닥·홈페이지,N
+케이트의원,동교동,마포구 양화로 148 탑라인타워 7층,https://kateclinic.com/,피부과 전문의 1(모두닥),접속 차단(403),41(모두닥),Y,신규 후보 · 자동 접근 차단 → 목록만 전달,닥터나우·모두닥·캐시닥,N
+제이필의원,동교동,마포구 양화로 166 5·7층,https://hongdae.jfeelclinic.com/,전문의 3(과목 미기재),https://hongdae.jfeelclinic.com/index.php?idx=c5ffd1dac6058a/c5ffd1eb06060b,46(모두닥),Y,신규 후보,닥터나우·모두닥·굿닥·홈페이지,N
+유앤미의원 홍대점,동교동,마포구 양화로 165 상진빌딩 14층,https://hdyounme.com/,표기 없음,https://hdyounme.com/page/s9/s3.php,11(모두닥),Y,신규 후보,닥터나우·모두닥·굿닥·홈페이지,N
+연세피부과의원,동교동,마포구 양화로 156 엘지팰리스빌딩 302호,없음,피부과 전문의 1(닥터나우),-,-,N,홈페이지 없음(질환 진료 중심 추정),닥터나우·모두닥,N
+에스준의원 홍대점,동교동,마포구 동교로 191 D.B.M빌딩 2층 201호,http://www.sjune.co.kr/,미확인,미확인(SSL 인증서 만료로 접속 불가),59(모두닥),N,홈페이지 접속 불가(SSL 만료) · 복구되면 재검토,모두닥·114,N
+세가지소원의원,동교동,마포구 양화로 165 상진빌딩 11층(오블리주와 동일 층 표기 — 확인필요),https://m.3wishesps.com/layout/sub05-3.html,성형외과·피부과 과목 표기,https://m.3wishesps.com/board/event/8/ (압구정 본점 이벤트 위주),-,N,성형외과 네트워크 지점 페이지 · 홍대점 전용 이벤트 없음 → 제외(확인필요),닥터나우·굿닥·네트워크 사이트,N
+서피부과의원,서교동,마포구 양화로 128,http://www.seoderma.co.kr/,피부과 전문의 1(닥터나우),확인불가(HTTPS 연결 거부),89(모두닥),N,질환 진료 중심(여드름 압출·무좀 등) · 홈페이지 접속 불가,닥터나우·모두닥·하이닥,N
+샤인빔의원 홍대점,동교동,마포구 양화로 151 욱도빌딩 6-7층,https://hongdae.shinebeam.co.kr/,가정의학과 전문의 2(닥터나우),https://hongdae.shinebeam.co.kr/index.php/event,25(모두닥),Y,신규 후보 · 조사 시점 서버 502 → 캡처 때 재시도,닥터나우·모두닥·검색 요약,N
+뷰티라운지의원 홍대점,동교동,마포구 홍익로6길 15 ART BOX 건물 5층,https://hongdae.beautyloungeclinic.com/,표기 없음,https://hongdae.beautyloungeclinic.com/ko/events,-,Y,신규 후보 · 체인,닥터나우·굿닥·홈페이지,N
+벨아미-리노보의원,동교동,마포구 양화로 176 스타피카소 5층,https://renovoh.net/,"피부과 전문의(검색 요약, 미확인)",확인불가(구 도메인 renovoh.co.kr 인증서 오류),-,Y,신규 후보 · 홈페이지 접속 불안정 → 캡처 때 재시도,닥터나우·굿닥·검색 요약,N
+백피부과의원,동교동,마포구 연희로 5 2층,없음,피부과 전문의 1(닥터나우),-,39(모두닥),N,홈페이지 없음,닥터나우·모두닥,N
+메이퓨어의원 홍대입구점,동교동,마포구 월드컵북로2길 57 5층,https://www.maypureclinic.com/,표기 없음,https://www.maypureclinic.com/en-US/community/events,45(모두닥),Y,신규 후보 · 자동 접근 차단 → 목록만 전달,닥터나우·모두닥·검색 요약,N
+메이드유의원 홍대점,동교동,마포구 양화로 165 상진빌딩 12층,없음,미확인,-,20(모두닥),N,홈페이지 없음,닥터나우·모두닥,N
+마인드피부과의원,동교동,마포구 양화로18길 3 KT플라자 3층,https://mindskin.co.kr/,피부과 전문의 2(홈페이지),https://mindskin.co.kr/ko/events,119(모두닥),Y,신규 후보 · 질환 진료 비중 높음(이벤트 페이지 있음),닥터나우·모두닥·홈페이지,N
+리즈온의원 홍대점,서교동,마포구 홍익로 25 5층,https://hongdae.lizonclinics.co.kr/,표기 없음,https://hongdae.lizonclinics.co.kr/branch/sub/?mcode=0500000000,15(모두닥),Y,신규 후보 · 체인,닥터나우·모두닥·홈페이지,N
+리버스의원 홍대점,동교동,마포구 양화로 165 상진빌딩 13층,http://hd.reverseclinic.com,표기 없음,http://hd.reverseclinic.com/?idx=event2026,37(모두닥),Y,신규 후보,닥터나우·모두닥·강남언니·홈페이지,N
+닥터쁘띠의원 홍대점,동교동,마포구 양화로 151 욱도빌딩 8층,https://hongdae.doctorpetit.com,표기 없음,https://hongdae.doctorpetit.com/event (조사 시점 게시물 없음),-,Y,신규 후보 · 이벤트 게시물 없으면 '이벤트 없음' 처리,닥터나우·모두닥·홈페이지,N
+클림의원 홍대점,동교동,마포구 양화로 141 롯데호텔L7홍대 3층,https://kleam.kr,"피부과 전문의(모두닥 표기, 홈페이지엔 없음)",https://kleam.kr/?idx=c6a1800b92b29f,36(모두닥),Y,신규 후보,모두닥·홈페이지,N
+드림페이스의원,동교동,마포구 양화로 196 동성빌딩 2층,없음,미확인,-,25(모두닥),N,홈페이지 없음,모두닥·강남언니·똑닥,N
+샤인스타의원 홍대점,동교동,마포구 양화로 165 상진빌딩 4층,없음,표기 없음,-,39(모두닥),N,홈페이지 없음(페이스북만),모두닥·페이스북,N
+유앤아이의원 홍대신촌점,동교동,마포구 양화로 162 좋은사람들빌딩 5층,https://www.scuni114.co.kr,표기 없음,https://www.scuni114.co.kr/event/,59(모두닥),Y,신규 후보,모두닥·굿닥·홈페이지,N
+오라의원,동교동,마포구 양화로 148 교정빌딩 5층,없음,표기 없음,-,23(모두닥),N,홈페이지 없음,모두닥,N
+연세위더스의원,동교동,마포구 양화로 178 목화빌딩 11층,http://www.wusclinic.co.kr,산부인과 전문의(굿닥·닥터나우),미확인(SSL 인증서 오류),-,N,산부인과 중심 · 홈페이지 접속 불가,굿닥·닥터나우·하이닥·마이닥터,N
+닥터에버스의원 홍대점,동교동,마포구 양화로 140 H큐브빌딩 5층,https://hongdae.drevers.com,피부과 전문의(마이닥터 표기),접속 차단,-,Y,신규 후보 · 자동 접근 차단 → 목록만 전달,마이닥터·모두닥·evers12.co.kr,N

@@ -1,0 +1,100 @@
+[
+  {
+    "slug": "diet-and-skin",
+    "title": "다이어트 환과 피부, 체중 변화가 피부에 남기는 것",
+    "category": "note",
+    "concerns": [
+      "diet",
+      "elasticity"
+    ],
+    "treatments": [
+      "diet.html"
+    ],
+    "date": "2026. 11.",
+    "summary": "급하게 빼면 얼굴이 꺼지고 탄력이 떨어집니다. 체중 변화가 피부에 미치는 영향과, 한방 다이어트에서 피부를 함께 챙기는 이유를 설명합니다."
+  },
+  {
+    "slug": "first-consult",
+    "title": "첫 상담에서 묻는 것과 미리 준비하면 좋은 것",
+    "category": "first-visit",
+    "concerns": [],
+    "treatments": [],
+    "date": "2026. 11.",
+    "summary": "처음 오시면 무엇을 물어보는지, 어떤 순서로 진행되는지, 무엇을 준비해 오면 상담이 빨라지는지 정리했습니다."
+  },
+  {
+    "slug": "how-cost-works",
+    "title": "시술 비용은 어떻게 정해지나 — 부위·회수·조건",
+    "category": "first-visit",
+    "concerns": [],
+    "treatments": [],
+    "date": "2026. 11.",
+    "summary": "금액표를 보기 전에 알아 두면 좋은 구조입니다. 비용이 무엇에 따라 달라지는지, 상담에서 어떻게 설명드리는지 정리했습니다."
+  },
+  {
+    "slug": "jemo-between",
+    "title": "제모 시술 사이 셀프 관리, 면도는 되고 왁싱은 안 되는 이유",
+    "category": "care",
+    "concerns": [
+      "hair"
+    ],
+    "treatments": [
+      "jemo.html"
+    ],
+    "date": "2026. 11.",
+    "summary": "레이저 제모는 여러 회에 걸쳐 진행됩니다. 시술과 시술 사이에 털이 자랄 때 어떻게 정리해야 하는지, 하면 안 되는 것은 무엇인지 설명합니다."
+  },
+  {
+    "slug": "pigment-types",
+    "title": "기미·주근깨·잡티, 뭐가 다르고 왜 구분해야 하나",
+    "category": "concern",
+    "concerns": [
+      "pigment"
+    ],
+    "treatments": [
+      "toning.html"
+    ],
+    "date": "2026. 11.",
+    "summary": "얼굴의 갈색 점을 모두 \"기미\"라고 부르지만 생긴 원인과 깊이가 다릅니다. 구분법과 각각에 맞는 접근을 원장이 설명합니다."
+  },
+  {
+    "slug": "pores",
+    "title": "모공이 커 보이는 세 가지 이유와 각각의 대처",
+    "category": "concern",
+    "concerns": [
+      "acne"
+    ],
+    "treatments": [
+      "acne.html",
+      "skincare.html"
+    ],
+    "date": "2026. 11.",
+    "summary": "피지, 탄력 저하, 염증 흔적 — 모공이 넓어 보이는 원인은 하나가 아닙니다. 원인별로 집에서 할 일과 병원에서 할 일을 나눠 설명합니다."
+  },
+  {
+    "slug": "toning-schedule",
+    "title": "토닝은 몇 회, 몇 주 간격이 맞을까",
+    "category": "guide",
+    "concerns": [
+      "pigment"
+    ],
+    "treatments": [
+      "toning.html"
+    ],
+    "date": "2026. 11.",
+    "summary": "\"몇 번 받아야 하나요\"가 가장 많은 질문입니다. 토닝의 원리, 회수와 간격을 정하는 기준, 중간에 쉬어야 하는 경우를 설명합니다."
+  },
+  {
+    "slug": "why-hanuiwon",
+    "title": "한의원이 피부 시술을 하는 이유",
+    "category": "note",
+    "concerns": [
+      "dry"
+    ],
+    "treatments": [
+      "antiaging.html"
+    ],
+    "date": "2026. 11.",
+    "summary": "\"한의원에서 레이저를요?\"라는 질문을 자주 받습니다. 피부를 몸의 일부로 보는 관점과, 시술과 몸 관리를 함께 다루는 이유를 원장이 직접 씁니다."
+  }
+]
