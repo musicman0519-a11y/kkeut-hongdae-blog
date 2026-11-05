@@ -22,7 +22,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "kkeut_seo_site"
 THEME = ROOT / "scripts" / "theme"
-HEAD_START = '<script src="https://cdn.tailwindcss.com">'
+HEAD_START = '<link rel="stylesheet" href="assets/tailwind.css">'
+OLD_HEAD_START = '<script src="https://cdn.tailwindcss.com">'  # 정적 CSS 전환(2026-11-05) 전 페이지의 시작점
 BODY_OPEN = '<body class="antialiased">\n'
 SKIP: set[str] = set()  # index.html 도 포함(머리말의 페이지별 메타·preload 는 HEAD_START 앞이라 보존됨)
 
@@ -62,7 +63,9 @@ def blocks() -> tuple[str, str, str]:
 
 def transform(text: str, head: str, header: str, footer: str) -> str:
     # 1. head 공통 부분
-    i = text.index(HEAD_START)
+    i = text.find(HEAD_START)
+    if i < 0:
+        i = text.index(OLD_HEAD_START)
     j = text.index("</head>", i)
     text = text[:i] + head + text[j:]
     # 2. 상단바·헤더·nav (옛 구조: <body> 다음 ~ 첫 </nav> / 새 구조: <header …> ~ </header>)

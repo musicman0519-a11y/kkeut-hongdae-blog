@@ -37,3 +37,4 @@
 ## 진행 기록
 - 2026-11-05 가비아 DNS 관리툴에 A @ 76.76.21.21, CNAME www cname.vercel-dns.com. 입력(17:33) → 구글 DNS 전파 1분 내 → Vercel Refresh 뒤 SSL 발급, 17:36 apex 200. 가비아의 "DNS 호스트" 메뉴는 네임서버용이라 쓰지 않는다(DNS 관리툴 dns.gabia.com 이 맞는 곳).
 - 2026-11-05 **네이버 서치어드바이저 등록 완료**: 사이트 https://hongdaekkeutclinic.com 소유확인(HTML 태그 `naver-site-verification`, index.html head, 커밋 6599981), 사이트맵 `sitemap.xml` 제출(17:47), 웹 페이지 수집 요청 7건(/, columns, jemo, toning, lifting, acne, diet). 구글 서치콘솔은 미등록.
+- 2026-11-05 **구글 서치콘솔 등록 완료**: URL 접두어 속성 https://hongdaekkeutclinic.com, 소유확인 HTML 파일 `kkeut_seo_site/googledd3b9a72d5007740.html`(지우면 확인 풀림; check_theme·apply_theme 는 google*/naver* 인증 파일 제외, 커밋 e25b775), sitemap.xml 제출 성공(발견 18쪽).

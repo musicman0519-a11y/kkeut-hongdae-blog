@@ -17,12 +17,12 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const page = (await (await fetch(`http://127.0.0.1:${port}/json`)).json()).find((t) => t.type === "page");
   const ws = new WebSocket(page.webSocketDebuggerUrl);
   await new Promise((r) => (ws.onopen = r));
-  let id = 0; const pending = new Map(); let bytes = 0, requests = 0; const types = {};
+  let id = 0; const pending = new Map(); let bytes = 0, requests = 0; const types = {}; const urls = new Map(); const sizes = new Map();
   ws.onmessage = (m) => {
     const d = JSON.parse(m.data);
     if (d.id && pending.has(d.id)) { pending.get(d.id)(d); pending.delete(d.id); return; }
-    if (d.method === "Network.requestWillBeSent") requests++;
-    if (d.method === "Network.loadingFinished") bytes += d.params.encodedDataLength || 0;
+    if (d.method === "Network.requestWillBeSent") { requests++; urls.set(d.params.requestId, d.params.request.url); }
+    if (d.method === "Network.loadingFinished") { bytes += d.params.encodedDataLength || 0; sizes.set(d.params.requestId, d.params.encodedDataLength || 0); }
     if (d.method === "Network.responseReceived") { const t = d.params.type; types[t] = (types[t] || 0) + 1; }
   };
   const send = (method, params = {}) => new Promise((r) => { const i = ++id; pending.set(i, r); ws.send(JSON.stringify({ id: i, method, params })); });
@@ -34,12 +34,13 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   await send("Emulation.setCPUThrottlingRate", { rate: 4 });
   await send("Page.addScriptToEvaluateOnNewDocument", { source: `window.__m={cls:0,lcp:0};
     new PerformanceObserver(l=>{for(const e of l.getEntries()){if(!e.hadRecentInput)window.__m.cls+=e.value;}}).observe({type:'layout-shift',buffered:true});
-    new PerformanceObserver(l=>{const es=l.getEntries();if(es.length)window.__m.lcp=es[es.length-1].startTime;}).observe({type:'largest-contentful-paint',buffered:true});` });
+    new PerformanceObserver(l=>{const es=l.getEntries();if(es.length){const e=es[es.length-1];window.__m.lcp=e.startTime;window.__m.lcpEl=(e.element?e.element.tagName+(e.element.id?'#'+e.element.id:''):'')+(e.url?' '+e.url.split('/').pop():'');}}).observe({type:'largest-contentful-paint',buffered:true});` });
   await send("Page.navigate", { url });
   await sleep(8000);
   const ev = await send("Runtime.evaluate", { returnByValue: true, expression: `(() => { const n = performance.getEntriesByType('navigation')[0]; return { ...window.__m, domContentLoaded: n.domContentLoadedEventEnd, load: n.loadEventEnd }; })()` });
   const m = ev.result.result.value;
-  console.log(JSON.stringify({ url, width, mobile, lcp_ms: Math.round(m.lcp), cls: +m.cls.toFixed(3), domContentLoaded_ms: Math.round(m.domContentLoaded), load_ms: Math.round(m.load), requests, kb: Math.round(bytes / 1024), types }));
+  const top = [...sizes.entries()].map(([k, v]) => [urls.get(k) || "?", v]).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([u, v]) => `${Math.round(v / 1024)}KB ${u.replace(/^https?:\/\/[^/]+\//, "").slice(0, 70)}`);
+  console.log(JSON.stringify({ url, width, mobile, lcp_ms: Math.round(m.lcp), lcp_el: m.lcpEl, cls: +m.cls.toFixed(3), domContentLoaded_ms: Math.round(m.domContentLoaded), load_ms: Math.round(m.load), requests, kb: Math.round(bytes / 1024), types, top }));
   ws.close(); chrome.kill(); try { fs.rmSync(profile, { recursive: true, force: true }); } catch {}
   process.exit(0);
 })().catch((e) => { console.error(e); chrome.kill(); process.exit(1); });

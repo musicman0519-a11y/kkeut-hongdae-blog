@@ -17,7 +17,7 @@ SITE = ROOT / "kkeut_seo_site"
 BASE = ROOT / "data" / "theme-baseline.json"
 OLD_COLORS = ["brandorange", "cardred", "cardblue", "cardteal", "cardnavy", "cardmagenta", "cardgreen", "kpink", "kpinksoft", "khot", "kyellow"]
 VERIFY_FILE = re.compile(r"^(google|naver)[0-9a-f]+\.html$")  # 검색엔진 소유확인 파일은 페이지가 아님
-HEAD_START = '<script src="https://cdn.tailwindcss.com">'
+HEAD_START = '<link rel="stylesheet" href="assets/tailwind.css">'
 
 
 def read(p: Path) -> str:

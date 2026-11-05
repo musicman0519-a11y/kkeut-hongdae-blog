@@ -11,6 +11,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/about.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -31,7 +32,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -47,6 +48,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/acne.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -67,7 +69,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -83,6 +85,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/antiaging-center.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -103,7 +106,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -119,6 +122,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/antiaging.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -139,7 +143,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -155,6 +159,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "column-summer-skin-care.html",
     "columns.html",
     "columns.html#tag=hair",
@@ -176,7 +181,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -192,6 +197,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "column-jemo-shaving.html",
     "columns.html",
     "columns.html#tag=dry",
@@ -214,7 +220,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -238,6 +244,7 @@
     "#tag=scar",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "column-jemo-shaving.html",
     "column-summer-skin-care.html",
     "columns.html",
@@ -258,7 +265,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -274,6 +281,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/diet.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -294,7 +302,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -310,6 +318,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/face-contour.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -330,7 +339,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -352,6 +361,7 @@
     "antiaging.html",
     "assets/home/kkeut-left.jpg",
     "assets/site.css",
+    "assets/tailwind.css",
     "column-jemo-shaving.html",
     "column-summer-skin-care.html",
     "columns.html",
@@ -390,7 +400,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -406,6 +416,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "column-jemo-shaving.html",
     "columns.html",
     "https://hongdaekkeutclinic.com/jemo.html",
@@ -426,7 +437,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -442,6 +453,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/lifting.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -462,7 +474,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -488,6 +500,7 @@
     "#tag=scar",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "column-summer-skin-care.html",
     "columns.html",
     "https://hongdaekkeutclinic.com/magazine-care.html",
@@ -507,7 +520,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -533,6 +546,7 @@
     "#tag=scar",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/magazine-concern.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -551,7 +565,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -577,6 +591,7 @@
     "#tag=scar",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/magazine-first-visit.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -595,7 +610,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -621,6 +636,7 @@
     "#tag=scar",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "column-jemo-shaving.html",
     "columns.html",
     "https://hongdaekkeutclinic.com/magazine-guide.html",
@@ -640,7 +656,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -666,6 +682,7 @@
     "#tag=scar",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/magazine-note.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -684,7 +701,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -700,6 +717,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/scar-center.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -720,7 +738,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -736,6 +754,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/skinbooster.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -756,7 +775,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -772,6 +791,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/skincare.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -792,7 +812,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false
@@ -808,6 +828,7 @@
     "#",
     "about.html",
     "assets/site.css",
+    "assets/tailwind.css",
     "columns.html",
     "https://hongdaekkeutclinic.com/toning.html",
     "https://map.naver.com/p/entry/place/2063988521?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=126.9238845&lat=37.5564310&c=15.00,0,0,0,dh",
@@ -828,7 +849,7 @@
    "old_colors": {},
    "arbitrary_colors": [],
    "blocks": {
-    "head_nav": "09391a3dc9",
+    "head_nav": "0065d1da86",
     "footer_end": "c797181dca"
    },
    "crlf": false

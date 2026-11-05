@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from apply_theme import HEAD_START, BODY_OPEN, blocks  # noqa: E402
+from apply_theme import HEAD_START, OLD_HEAD_START, BODY_OPEN, blocks  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 ADMIN = ROOT / "kkeut_admin.html"
@@ -28,7 +28,9 @@ def sync(text: str) -> str:
     b = text.index("</html>", a)
     b = text.index("`;", b) + len("`;")
     t = text[a:b]
-    i = t.index(HEAD_START.replace("</script>", "<\\/script>")[:len(HEAD_START)])
+    i = t.find(HEAD_START)
+    if i < 0:
+        i = t.index(OLD_HEAD_START)
     j = t.index("</head>", i)
     t = t[:i] + head + t[j:]
     bo = t.index(BODY_OPEN) + len(BODY_OPEN)
