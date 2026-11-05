@@ -106,7 +106,7 @@ def render(slug: str, meta: dict, body: str, d: dict, template: str) -> str:
     t = _sub1(t, r"<!-- mg:byline -->\n.*?<!-- /mg:byline -->", f"<!-- mg:byline -->\n{B.frag_byline(d, post)}\n<!-- /mg:byline -->", "mg:byline")
     t = _sub1(t, r'(<div class="kr mt-9 space-y-5 text-\[15\.5px\] leading-\[1\.95\] text-black/80">).*?(</div>\n  <div class="mt-12 flex flex-wrap gap-3">)',
               lambda m: m.group(1) + "\n" + body_html(body) + "\n  " + m.group(2), "본문")
-    t = _sub1(t, r'<a href="[^"]*" class="rounded-xl bg-\[#1a1a1a\][^>]*>[^<]*</a>',
+    t = _sub1(t, r'<a href="[^"]*" class="rounded-xl bg-(?:ink|\[#1a1a1a\])[^>]*>[^<]*</a>',
               lambda m: re.sub(r'href="[^"]*"', f'href="{rel_href}"', re.sub(r">[^<]*</a>$", f">{escape(rel_name)}</a>", m.group(0))), "관련 시술 버튼")
     t = _sub1(t, r"<!-- mg:next -->\n.*?<!-- /mg:next -->", "<!-- mg:next -->\n<!-- /mg:next -->", "mg:next")
     return t

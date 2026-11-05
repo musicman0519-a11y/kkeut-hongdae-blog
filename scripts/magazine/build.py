@@ -114,7 +114,7 @@ def frag_urls(d: dict) -> str:
 
 
 # ---------- 허브 페이지(파일 전체 생성) ----------
-BASE_URL = "https://blog.kkeutclinic-hongdae.co.kr"
+BASE_URL = "https://hongdaekkeutclinic.com"
 EMPTY_NOTE = (
     '      <li class="py-12 text-center text-[14px] text-black/45 kr">준비 중인 카테고리입니다. '
     '<a href="columns.html" class="underline">전체 글 보기</a></li>'

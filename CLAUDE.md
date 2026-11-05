@@ -1,10 +1,12 @@
 # 끗한의원(홍대) 마케팅 작업 저장소
 
-마케팅 담당(이경세 마케팅 연구소)이 끗한의원 홍대점을 위해 돌리는 세 갈래 작업이 한 폴더에 있다. git 저장소가 아니다. 대화는 한국어로.
+마케팅 담당(이경세 마케팅 연구소)이 끗한의원 홍대점을 위해 돌리는 세 갈래 작업이 한 폴더에 있다. 대화는 한국어로.
+
+**git**: 원격 https://github.com/musicman0519-a11y/kkeut-hongdae-blog (비공개, `main` 하나). `.gitignore` 는 허용 목록 방식이라 `captures/`·`data/kkeut/`·루트 xlsx·pdf·gif 는 자동으로 빠진다. 커밋 전 `python -X utf8 -I scripts/repo_check.py`(환자·매출·캡처·토큰 검사) 통과가 필수. 커밋·푸시는 사용자가 요청할 때만, 메시지는 한국어 + Co-Authored-By. 도메인은 `https://hongdaekkeutclinic.com`(2026-11-05 구매, 기준 주소; 바꿀 때는 `scripts/set_domain.py <url>` → new_column → build → baseline). 호스팅은 Vercel(Root Directory `kkeut_seo_site`, 빌드 없음) — 연결 절차는 `docs/specs/domain-connect.md`.
 
 | 갈래 | 코드 | 데이터·산출물 |
 |---|---|---|
-| SEO 사이트 (blog.kkeutclinic-hongdae.co.kr) | `kkeut_seo_site/` (정적 HTML 21쪽, 배포되는 유일한 폴더), `kkeut_admin.html`(칼럼 발행 어드민, 루트), `scripts/magazine/build.py`(매거진 목록 생성) | `kkeut_seo_site/assets/`, `data/magazine/posts.json`(글 목록 원본) |
+| SEO 사이트 (hongdaekkeutclinic.com) | `kkeut_seo_site/` (정적 HTML 21쪽, 배포되는 유일한 폴더), `kkeut_admin.html`(칼럼 발행 어드민, 루트), `scripts/magazine/build.py`(매거진 목록 생성) | `kkeut_seo_site/assets/`, `data/magazine/posts.json`(글 목록 원본) |
 | 의료광고 월간 모니터링(경쟁 의원 27곳) | `scripts/admon/` | `data/admon/`, `captures/<YYYY-MM>/`, 루트의 `의료광고_병원별분석_*.xlsx` |
 | 끗한의원 월간 마케팅 분석표 | `scripts/kkeut/` | `data/kkeut/<월>/`(환자 정보, 공유 금지), 루트의 `끗한의원_마케팅분석표_*.xlsx` |
 

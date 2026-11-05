@@ -1,6 +1,6 @@
 # 깃허브 저장소 만들기 (사이트 + 작업 도구)
 
-작성일: 2026-11-05 · 상태: 승인됨(2026-11-05 — 범위 B 전체, 비공개, 호스팅 미정, 저장소 https://github.com/musicman0519-a11y/kkeut-hongdae-blog.git) · 관련: `docs/specs/magazine-ia.md`, `docs/specs/ui-restyle.md`, 어드민 「업로드 안내」(GitHub → Vercel 흐름을 전제로 쓰여 있음)
+작성일: 2026-11-05 · 상태: 완료(2026-11-05 — 범위 B 전체, 비공개, 호스팅 미정, 저장소 https://github.com/musicman0519-a11y/kkeut-hongdae-blog.git) · 관련: `docs/specs/magazine-ia.md`, `docs/specs/ui-restyle.md`, 어드민 「업로드 안내」(GitHub → Vercel 흐름을 전제로 쓰여 있음)
 
 ## 문제 / 목적
 사이트와 생성 스크립트가 로컬 폴더에만 있어 배포·백업·이력이 없다. 깃허브에 올려 ① 변경 이력을 남기고 ② Vercel 같은 호스팅이 저장소에서 바로 배포하게 하고 ③ 다른 컴퓨터에서도 같은 작업을 이어 가게 한다. 단, 이 폴더에는 **환자 정보·세무 매출·경쟁 의원 캡처·계약서**가 함께 있으므로 올라가면 안 되는 것을 먼저 가른다.
@@ -36,13 +36,13 @@
 4. (선택) Vercel 에서 저장소 연결, Root Directory 지정 → 미리보기 URL 로 확인.
 5. 이후: 글 발행·디자인 수정 뒤 `repo_check.py` → 커밋 → 푸시. 커밋은 사용자가 "올려줘" 할 때만.
 
-## 완료 기준
-- [ ] `git status` 에 `captures/`, `data/kkeut/`, 루트 xlsx·pdf·gif·`.serve.log` 가 **보이지 않는다**(ignored).
-- [ ] `git ls-files` 에 `kkeut_seo_site/` 40파일, `scripts/`, `docs/`, `data/magazine/posts.json`, `kkeut_admin.html`, `CLAUDE.md`, `README.md`, `.gitignore`, `.gitattributes` 가 있다. 총 용량 15MB 이하.
-- [ ] `scripts/repo_check.py` 가 통과하고, 일부러 `data/kkeut/` 파일을 강제 추가(`git add -f`)하면 실패한다(테스트 뒤 되돌림).
-- [ ] 원격 `origin` 이 사용자가 준 URL 이고 `main` 이 푸시되어 깃허브에서 README 가 보인다.
-- [ ] 저장소를 새 폴더에 clone 해서 `python -X utf8 -I scripts/magazine/build.py --check` 와 `check_theme.py check` 가 그대로 통과한다(필요한 파일이 다 올라갔다는 증거).
-- [ ] 어드민 「업로드 안내」가 새 절차를 설명한다.
+## 완료 기준 (2026-11-05 전부 확인)
+- [x] `git status` 에 `captures/`, `data/kkeut/`, 루트 xlsx·pdf·gif·`.serve.log` 가 **보이지 않는다**(ignored).
+- [x] `git ls-files` 에 `kkeut_seo_site/` 40파일, `scripts/`, `docs/`, `data/magazine/posts.json`, `kkeut_admin.html`, `CLAUDE.md`, `README.md`, `.gitignore`, `.gitattributes` 가 있다. 총 용량 15MB 이하.
+- [x] `scripts/repo_check.py` 가 통과하고, 일부러 `data/kkeut/` 파일을 강제 추가(`git add -f`)하면 실패한다(테스트 뒤 되돌림).
+- [x] 원격 `origin` 이 사용자가 준 URL 이고 `main` 이 푸시되어 깃허브에서 README 가 보인다.
+- [x] 저장소를 새 폴더에 clone 해서 `python -X utf8 -I scripts/magazine/build.py --check` 와 `check_theme.py check` 가 그대로 통과한다(필요한 파일이 다 올라갔다는 증거).
+- [x] 어드민 「업로드 안내」가 새 절차를 설명한다.
 
 ## 제약
 - 환자 이름·번호·매출·계약서·경쟁 의원 캡처는 어떤 경우에도 올리지 않는다(CLAUDE.md 규칙). 허용 목록 방식 + 점검 스크립트 이중 장치.

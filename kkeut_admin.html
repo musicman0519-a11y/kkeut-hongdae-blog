@@ -219,7 +219,7 @@
           <div>
             <label class="text-[13px] font-semibold text-black/60">사이트 주소 (배포 도메인)</label>
             <input id="site" type="text" class="mt-1.5 w-full border border-black/15 rounded-lg px-4 py-3 text-[14px]">
-            <p class="kr mt-1.5 text-[12px] text-black/40">배포 도메인이 바뀔 때 한 번만 변경하면 됩니다(기본 https://blog.kkeutclinic-hongdae.co.kr). 저장 즉시 반영돼요.</p>
+            <p class="kr mt-1.5 text-[12px] text-black/40">배포 도메인이 바뀔 때 한 번만 변경하면 됩니다(기본 https://hongdaekkeutclinic.com). 저장 즉시 반영돼요.</p>
             <button onclick="saveSite()" class="mt-3 bg-[#1a1a1a] text-white font-bold rounded-xl px-5 py-2.5 text-[13.5px] hover:bg-[#F97B1E] transition">저장</button>
           </div>
           <div class="border-t border-black/10 pt-6">
@@ -268,7 +268,7 @@ function enterAdmin() {
   document.getElementById('screen-admin').classList.add('on');
   initEditor();
   renderList();
-  document.getElementById('site').value = store.get('kkeut_site') || 'https://blog.kkeutclinic-hongdae.co.kr';
+  document.getElementById('site').value = store.get('kkeut_site') || 'https://hongdaekkeutclinic.com';
 }
 
 // ===== 탭 =====
@@ -561,7 +561,7 @@ function generate() {
   if (!d0.title || !d0.slug || plain.length < 10) { alert('제목, 파일 이름(영문), 본문은 필수입니다.'); return; }
   saveDraft2(d0);
 
-  const site = store.get('kkeut_site') || 'https://blog.kkeutclinic-hongdae.co.kr';
+  const site = store.get('kkeut_site') || 'https://hongdaekkeutclinic.com';
   const file = 'column-' + d0.slug + '.html';
   const seotitle = d0.title + ' | 홍대 끗 한의원 원장 칼럼';
   const summary = plain.slice(0, 90);

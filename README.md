@@ -1,6 +1,6 @@
 # 끗한의원(홍대) SEO 사이트 · 끗 매거진
 
-blog.kkeutclinic-hongdae.co.kr 의 정적 사이트와 발행 도구. 빌드 없음(Tailwind CDN). 자세한 규칙은 `CLAUDE.md`.
+hongdaekkeutclinic.com 의 정적 사이트와 발행 도구. 빌드 없음(Tailwind CDN). 자세한 규칙은 `CLAUDE.md`.
 
 | 폴더 | 내용 |
 |---|---|
