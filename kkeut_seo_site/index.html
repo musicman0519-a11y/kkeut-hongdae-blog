@@ -11,7 +11,8 @@
 <meta property="og:description" content="홍대 피부과·합정 피부과·신촌 피부과를 찾고 계신가요? 홍대입구역 도보 3분 끗 한의원 — 레이저 제모, 리프팅, 미백·기미 토닝, 여드름, 스킨부스터, 다이어트. 일요일 진료.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hongdaekkeutclinic.com/index.html">
-<link rel="preload" href="assets/home/kkeut-left.jpg" as="image" fetchpriority="high">
+<link rel="preload" as="image" href="assets/home/hero-m.webp" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/home/hero.webp" media="(min-width: 768px)" fetchpriority="high">
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,7 +67,11 @@
 </header>
 
 <section id="hero" class="relative overflow-hidden bg-pinksoft">
-  <img src="assets/home/kkeut-left.jpg" alt="" width="1080" height="718" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover object-[72%_center]">
+  <picture data-slot="hero">
+    <source type="image/webp" media="(max-width: 767px)" srcset="assets/home/hero-m.webp">
+    <source type="image/webp" srcset="assets/home/hero.webp">
+    <img src="assets/home/hero.jpg" alt="" width="1400" height="929" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover" style="object-position: 68% center">
+  </picture>
   <div class="absolute inset-0 bg-white/80 md:bg-transparent md:bg-gradient-to-r md:from-white md:via-white/85 md:to-white/5"></div>
   <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 min-h-[500px] md:min-h-[580px] flex items-center py-16 md:py-24">
     <div class="max-w-[580px]">
@@ -122,7 +127,10 @@
       </div>
     </div>
     <div class="order-1 md:order-2 aspect-[4/3] md:aspect-auto md:min-h-[520px]">
-      <img src="assets/home/kkeut-right.jpg" alt="시술 중인 원장과 환자" width="1080" height="718" loading="lazy" decoding="async" class="w-full h-full object-cover">
+      <picture data-slot="find">
+      <source type="image/webp" srcset="assets/home/find.webp">
+      <img src="assets/home/find.jpg" alt="레이저 장비를 든 끗 한의원 원장" width="613" height="923" loading="lazy" decoding="async" class="w-full h-full object-cover" style="object-position: center 18%">
+    </picture>
     </div>
   </div>
 </section>
