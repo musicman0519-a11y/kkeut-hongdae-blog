@@ -39,3 +39,5 @@ settings.local.json
 .DS_Store
 Thumbs.db
 desktop.ini
+# 색 후보 등 임시 미리보기(kkeut_seo_site/_preview-*.html)
+_preview-*
